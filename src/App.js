@@ -10,7 +10,7 @@ const App = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		sendFeedback("***TEMPLATE_ID***", {
+		sendFeedback("template_utbcrmx", { // sendFeedback() récupre les variables que l'on retrouve dans le template
 			name,
 			company,
 			phone,
@@ -19,11 +19,11 @@ const App = () => {
 		});
 	};
 
-	const sendFeedback = (templateId, variables) => {
+	const sendFeedback = (templateId, variables) => { // on lance une fonction async pour récupéré les données si cela fonction ou envoyer un message d'erreur si l'action n'est pa valide
 		window.emailjs
 			.send("gmail", templateId, variables)
 			.then((res) => {
-				console.log("success !");
+				console.log("success !"); // tout les "set" suivant vont remettre le template à zéro
 				setName("");
 				setCompany("");
 				setPhone("");
@@ -45,7 +45,7 @@ const App = () => {
 					type="text"
 					id="name"
 					name="name"
-					onChange={(e) => setName(e.target.value)}
+					onChange={(e) => setName(e.target.value)} //après chaque changement on récupère la value de chaque input pour la stocker dans les variables correspondantes
 					placeholder="nom *"
 					value={name}
 					autoComplete="off"
@@ -67,7 +67,7 @@ const App = () => {
 					value={phone}
 				/>
 				<div className="email-content">
-					<lanel id="not-mail">Email non valide !</lanel>
+					<label id="not-mail">Email non valide !</label>
 					<input
 						type="mail"
 						id="email"
@@ -90,7 +90,7 @@ const App = () => {
 				className="button"
 				type="button"
 				value="Envoyer"
-				onClick={handleSubmit}
+				onClick={handleSubmit} // au clique, la fonction handleSublit() est lancée
 			/>
 			<div className="form-message"></div>
 		</form>
