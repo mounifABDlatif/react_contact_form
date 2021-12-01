@@ -112,7 +112,7 @@ textarea {
 .button:hover {
 	letter-spacing: 2px;
 }
-.error::placeholder {
+.error::placeholder { /* les doubles :: permettent de cibler le place holder*/
 	color: #ff4d4d;
 }
 .form-message {
